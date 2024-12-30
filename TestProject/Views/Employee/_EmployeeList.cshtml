@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TestProject.Models.EmployeeViewModel>
+<table id="tblEmployee" class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th width="5%" class="text-center">Name</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th width="5%" class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="5%" class="text-center">@index</td>
+                <td> @item.EmpName</td>
+                <td>@item.EmpContact</td>
+                <td>@item.EmpAddress</td>
+                <td>@item.RoleId</td>
+                <td>@item.Status</td>
+                <td class="text-center">
+                    <button id="btnEditData" class="btn btn-sm btn-info" type="button" onclick="getEmployeeFunction(@item.EmpId.ToString());">Eidt</button>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>

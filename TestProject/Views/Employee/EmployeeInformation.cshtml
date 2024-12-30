@@ -1,0 +1,75 @@
+﻿@model TestProject.Models.EmployeeViewModel
+@{
+    ViewData["Title"] = "Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card card-gray">
+    <div class="card-header bg-success">
+        <h1>Employee Information</h1>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.EmpId)
+                    <label>Employee Name<span class="text-danger text-md" aria-hidden="true">*</span></label>
+                    <input type="text" asp-for="EmpName" class="form-control" required />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Employee Contact<span class="text-danger text-md" aria-hidden="true">*</span></label>
+                    <input type="text" asp-for="EmpContact" class="form-control" required />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Employee Address<span class="text-danger text-md" aria-hidden="true">*</span></label>
+                    <input type="text" asp-for="EmpAddress" class="form-control" required />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Role<span class="text-danger text-md" aria-hidden="true">*</span></label>
+                    <select class="form-control form-select" required asp-for="RoleId">
+                        <option selected value="0">Select Role</option>
+                        <option value="1">Super Admin</option>
+                        <option value="2">Admin</option>
+                        <option value="3">User</option>
+                        <option value="4">Entry User</option>
+                    </select>
+                    @* @Html.DropDownListFor(model => model.RoleId, Model.RoleList, new { @class = "form-control", @required = "required" }) *@
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group" style="margin-top:1.9rem">
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="Status" type="checkbox" checked>
+                        <label class="form-check-label">
+                           Status
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-md btn-primary float-end" type="submit" id="btnSave">Submit</button>
+    </div>
+</div>
+<dvi class="container-fluid">
+    <div class="card">
+        <div class="card-header  bg-info">
+            <h1>Employee Information List</h1>
+        </div>
+        <div class="card-body">
+            <div class="row" id="EmployeeList">
+            </div>
+        </div>
+    </div>
+</dvi>
+
+@section scripts {
+    <script src="~/js/Employee.js" asp-append-version="true"></script>
+}
+
